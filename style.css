@@ -1010,115 +1010,478 @@ section {
   box-shadow: 0 12px 40px rgba(201,168,76,0.3);
 }
 
-/* ── Right Floating Button ── */
-.float-btn {
+/* ── Ring Bar ── */
+.ring-bar {
   position: fixed;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 0;
   z-index: 200;
-  width: var(--float-btn-size);
-  height: var(--float-btn-size);
-  background: var(--bg-secondary);
-  border: 1px solid var(--gold);
-  color: var(--gold);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background var(--transition), box-shadow var(--transition);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 12px 0;
   user-select: none;
   touch-action: none;
-  border-radius: 2px;
 }
 
-.float-btn:hover {
-  background: var(--gold-dim);
-  box-shadow: 0 0 24px rgba(201,168,76,0.3);
+.ring-bar.dragging { cursor: grabbing; }
+
+.ring-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+  position: relative;
 }
 
-.float-btn.dragging {
-  box-shadow: 0 8px 32px rgba(201,168,76,0.4);
-  cursor: grabbing;
-}
-
-.float-icon {
-  font-size: 20px;
-  pointer-events: none;
-  transition: transform var(--transition);
-}
-
-.float-btn.open .float-icon {
-  transform: rotate(45deg);
-}
-
-/* 플로팅 드로어 */
-.float-drawer {
-  position: fixed;
-  right: calc(var(--float-btn-size) + 36px);
-  z-index: 199;
+/* 라벨 — 호버시 왼쪽으로 슥 나옴 */
+.ring-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  min-width: 200px;
-  padding: 20px;
+  border-right: none;
+  padding: 6px 12px;
+  white-space: nowrap;
   opacity: 0;
-  pointer-events: none;
   transform: translateX(8px);
-  transition: opacity var(--transition), transform var(--transition);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  order: -1;
 }
 
-.float-drawer.open {
+.ring-item:hover .ring-label,
+.ring-item.active .ring-label {
   opacity: 1;
-  pointer-events: all;
   transform: translateX(0);
 }
 
-.drawer-section {
-  margin-bottom: 20px;
+/* 고리 버튼 */
+.ring-btn {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-right: none;
+  transition: background var(--transition), border-color var(--transition);
+  flex-shrink: 0;
 }
 
-.drawer-label {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.4em;
+.ring-btn svg {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.ring-item:hover .ring-btn,
+.ring-item.active .ring-btn {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+}
+
+.ring-item:hover .ring-btn svg,
+.ring-item.active .ring-btn svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 6px rgba(201,168,76,0.5));
+}
+
+/* ── Guild Drawer (서랍장 패널) ── */
+.guild-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 420px;
+  max-width: 90vw;
+  height: 100vh;
+  z-index: 300;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.guild-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-muted);
-  text-transform: uppercase;
-  margin-bottom: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  z-index: 10;
+}
+.drawer-close:hover { color: var(--gold); border-color: var(--gold); }
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 299;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+}
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: all;
 }
 
-.drawer-nav a {
-  display: block;
-  padding: 8px 0;
-  color: var(--text-secondary);
-  text-decoration: none;
+/* ── 서랍장 ── */
+.dresser-wrap {
+  padding: 64px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.dresser-drawer {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dresser-drawer.active {
+  display: flex;
+}
+
+/* 서랍 손잡이 */
+.dresser-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-primary);
+  position: sticky;
+  top: 64px;
+  z-index: 5;
+}
+
+.handle-knob {
+  width: 28px;
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, #6b5a2a, #3d3010);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.2), 0 2px 4px rgba(0,0,0,0.4);
+  border: 1px solid var(--gold);
+}
+
+.dresser-drawer-label {
   font-family: 'Cinzel', serif;
   font-size: 11px;
-  letter-spacing: 0.15em;
-  border-bottom: 1px solid var(--border);
-  transition: color var(--transition);
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
 }
 
-.drawer-nav a:hover { color: var(--gold); }
-.drawer-nav a:last-child { border-bottom: none; }
+/* 서랍 내용 */
+.dresser-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  /* 위에서 들여다보는 느낌 — 살짝 원근감 */
+  perspective: 800px;
+}
 
-.drawer-cta {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  background: var(--gold);
-  color: var(--bg-primary);
+.dresser-item {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.dresser-divider {
+  height: 1px;
+  background: var(--border);
+  position: relative;
+}
+.dresser-divider::after {
+  content: '✦';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-secondary);
+  padding: 0 8px;
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+.dresser-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dresser-item-title {
   font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  transition: background var(--transition);
-  margin-top: 16px;
-  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
 }
 
-.drawer-cta:hover { background: var(--gold-light); }
+.dresser-item-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.dresser-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all var(--transition);
+  align-self: flex-start;
+}
+.dresser-btn:hover { border-color: var(--gold); color: var(--gold); }
+.dresser-btn.gold { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+.dresser-btn.gold:hover { background: var(--gold); color: var(--bg-primary); }
+
+/* ── 손거울 ── */
+.mirror-frame {
+  width: 64px;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mirror-glass {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #6b5a2a, #1a1408);
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(201,168,76,0.2), inset 0 2px 4px rgba(255,255,255,0.1);
+}
+
+.mirror-icon { font-size: 24px; }
+
+/* ── 군번줄 도그태그 ── */
+.dogtag-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.dogtag-chain {
+  width: 1px;
+  height: 16px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--gold) 0px, var(--gold) 3px,
+    transparent 3px, transparent 6px
+  );
+  opacity: 0.6;
+}
+
+.dogtag {
+  width: 64px;
+  background: linear-gradient(135deg, #c0c0c0 0%, #888 50%, #c0c0c0 100%);
+  border-radius: 3px 3px 4px 4px;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.3);
+  position: relative;
+}
+
+.dogtag::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #666;
+  background: #999;
+}
+
+.dogtag-line {
+  font-family: 'Courier New', monospace;
+  font-size: 7px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-top: 2px;
+}
+.dogtag-line.code { font-size: 9px; letter-spacing: 0.3em; color: #111; }
+.dogtag-line.small { font-size: 6px; color: #555; }
+
+/* ── 여권 ── */
+.passport-wrap { flex-shrink: 0; }
+
+.passport-cover {
+  width: 56px;
+  height: 72px;
+  background: linear-gradient(135deg, #1a3a6b 0%, #0d2040 100%);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.passport-emblem { font-size: 20px; }
+.passport-text {
+  font-family: 'Cinzel', serif;
+  font-size: 5px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── 지갑 카드 ── */
+.wallet-wrap { flex-shrink: 0; }
+
+.wallet-card {
+  width: 72px;
+  height: 48px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.card-chip {
+  width: 16px;
+  height: 12px;
+  background: linear-gradient(135deg, #c9a84c, #8b6914);
+  border-radius: 2px;
+}
+
+.card-num {
+  font-family: 'Courier New', monospace;
+  font-size: 6px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.1em;
+}
+
+/* ── 두루마리 ── */
+.scroll-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.scroll-top-rod, .scroll-bottom-rod {
+  width: 56px;
+  height: 8px;
+  background: linear-gradient(to bottom, #8b6914, #5a4010);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.scroll-body {
+  width: 48px;
+  min-height: 56px;
+  background: linear-gradient(to right, #e8dfc0, #f5eed8, #e8dfc0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+}
+
+.scroll-text {
+  font-family: 'IM Fell English', serif;
+  font-size: 7px;
+  color: #5a4a2a;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ── 스마트폰 ── */
+.phone-wrap { flex-shrink: 0; }
+
+.phone-frame {
+  width: 48px;
+  height: 80px;
+  background: #111;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.1);
+  border: 1px solid #333;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0d1117, #1a2332);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px;
+}
+
+.phone-status {
+  font-family: 'Cinzel', serif;
+  font-size: 5px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+.phone-msg {
+  font-size: 6px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  line-height: 1.4;
+}
+
 
 /* ── Animations ── */
 @keyframes fadeUp {

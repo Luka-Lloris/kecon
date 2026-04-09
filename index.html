@@ -403,30 +403,222 @@
   </main>
 </div>
 
-<!-- ── RIGHT FLOATING BUTTON ── -->
-<button class="float-btn" id="floatBtn" aria-label="Guild Menu">
-  <span class="float-icon">⚔</span>
-</button>
+<!-- ── RIGHT FLOATING RING BUTTONS ── -->
+<div class="ring-bar" id="ringBar">
 
-<!-- Floating Drawer -->
-<div class="float-drawer" id="floatDrawer">
-  <div class="drawer-section">
-    <div class="drawer-label" data-en="Navigate" data-ja="ナビゲート" data-zh="导航">Navigate</div>
-    <nav class="drawer-nav">
-      <a href="#hero"   data-en="Entrance"     data-ja="入口"     data-zh="入口">Entrance</a>
-      <a href="#why"    data-en="The Realm"    data-ja="王国"     data-zh="王国">The Realm</a>
-      <a href="#quest"  data-en="Quest Board"  data-ja="依頼板"   data-zh="任务板">Quest Board</a>
-      <a href="#scout"  data-en="The Scouts"   data-ja="斥候隊"   data-zh="侦察队">The Scouts</a>
-      <a href="#legend" data-en="Legend Quest" data-ja="伝説依頼" data-zh="传奇任务">Legend Quest</a>
-    </nav>
+  <!-- 고리 버튼 1 : 내 정보 -->
+  <div class="ring-item" data-drawer="profile">
+    <div class="ring-btn">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- 바깥 고리 -->
+        <circle cx="24" cy="24" r="21" stroke="url(#rg1)" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="16" stroke="url(#rg1)" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+        <!-- 전통 장식 점 -->
+        <circle cx="24" cy="4"  r="1.5" fill="url(#rg1)"/>
+        <circle cx="24" cy="44" r="1.5" fill="url(#rg1)"/>
+        <circle cx="4"  cy="24" r="1.5" fill="url(#rg1)"/>
+        <circle cx="44" cy="24" r="1.5" fill="url(#rg1)"/>
+        <!-- 손거울 아이콘 -->
+        <circle cx="24" cy="21" r="6" stroke="url(#rg1)" stroke-width="1.5"/>
+        <line x1="24" y1="27" x2="24" y2="34" stroke="url(#rg1)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="20" y1="34" x2="28" y2="34" stroke="url(#rg1)" stroke-width="1.5" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="rg1" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#e8c96a"/>
+            <stop offset="100%" stop-color="#8b6914"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="ring-label">Profile</div>
   </div>
-  <a href="#" class="drawer-cta"
-     data-en="⚔  Post a Quest"
-     data-ja="⚔  依頼を出す"
-     data-zh="⚔  发布任务">
-    ⚔ &nbsp; Post a Quest
-  </a>
+
+  <!-- 고리 버튼 2 : 인증 -->
+  <div class="ring-item" data-drawer="auth">
+    <div class="ring-btn">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="21" stroke="url(#rg2)" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="16" stroke="url(#rg2)" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+        <circle cx="24" cy="4"  r="1.5" fill="url(#rg2)"/>
+        <circle cx="24" cy="44" r="1.5" fill="url(#rg2)"/>
+        <circle cx="4"  cy="24" r="1.5" fill="url(#rg2)"/>
+        <circle cx="44" cy="24" r="1.5" fill="url(#rg2)"/>
+        <!-- 여권 아이콘 -->
+        <rect x="14" y="15" width="20" height="18" rx="2" stroke="url(#rg2)" stroke-width="1.5"/>
+        <circle cx="24" cy="22" r="3.5" stroke="url(#rg2)" stroke-width="1.2"/>
+        <line x1="18" y1="28" x2="30" y2="28" stroke="url(#rg2)" stroke-width="1" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="rg2" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#e8c96a"/>
+            <stop offset="100%" stop-color="#8b6914"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="ring-label">Verify</div>
+  </div>
+
+  <!-- 고리 버튼 3 : 퀘스트 -->
+  <div class="ring-item" data-drawer="quests">
+    <div class="ring-btn">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="21" stroke="url(#rg3)" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="16" stroke="url(#rg3)" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+        <circle cx="24" cy="4"  r="1.5" fill="url(#rg3)"/>
+        <circle cx="24" cy="44" r="1.5" fill="url(#rg3)"/>
+        <circle cx="4"  cy="24" r="1.5" fill="url(#rg3)"/>
+        <circle cx="44" cy="24" r="1.5" fill="url(#rg3)"/>
+        <!-- 두루마리 아이콘 -->
+        <rect x="15" y="17" width="18" height="14" rx="1" stroke="url(#rg3)" stroke-width="1.5"/>
+        <ellipse cx="15" cy="24" rx="2.5" ry="7" stroke="url(#rg3)" stroke-width="1.2"/>
+        <ellipse cx="33" cy="24" rx="2.5" ry="7" stroke="url(#rg3)" stroke-width="1.2"/>
+        <line x1="19" y1="21" x2="29" y2="21" stroke="url(#rg3)" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+        <line x1="19" y1="24" x2="29" y2="24" stroke="url(#rg3)" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+        <line x1="19" y1="27" x2="25" y2="27" stroke="url(#rg3)" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+        <defs>
+          <linearGradient id="rg3" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#e8c96a"/>
+            <stop offset="100%" stop-color="#8b6914"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="ring-label">Quests</div>
+  </div>
+
 </div>
+
+<!-- ── DRAWER PANEL ── -->
+<div class="guild-drawer" id="guildDrawer">
+  <div class="drawer-close" id="drawerClose">✕</div>
+
+  <!-- 서랍장 뷰포트 -->
+  <div class="dresser-wrap">
+
+    <!-- 서랍 1 : Profile + 코드명 -->
+    <div class="dresser-drawer" id="drawerProfile">
+      <div class="dresser-handle">
+        <span class="handle-knob"></span>
+        <span class="dresser-drawer-label">I. Identity</span>
+        <span class="handle-knob"></span>
+      </div>
+      <div class="dresser-content">
+        <div class="dresser-item mirror-section">
+          <div class="mirror-frame">
+            <div class="mirror-glass">
+              <span class="mirror-icon">👤</span>
+            </div>
+          </div>
+          <div class="dresser-item-info">
+            <div class="dresser-item-title">Guild Member</div>
+            <div class="dresser-item-sub">Not registered</div>
+            <button class="dresser-btn">Set Profile</button>
+          </div>
+        </div>
+        <div class="dresser-divider"></div>
+        <div class="dresser-item dogtag-section">
+          <div class="dogtag-wrap">
+            <div class="dogtag-chain"></div>
+            <div class="dogtag">
+              <div class="dogtag-line">KECON GUILD</div>
+              <div class="dogtag-line code">— — — —</div>
+              <div class="dogtag-line">RECON UNIT</div>
+              <div class="dogtag-line small">UNREGISTERED</div>
+            </div>
+          </div>
+          <div class="dresser-item-info">
+            <div class="dresser-item-title">Code Name</div>
+            <div class="dresser-item-sub">Your guild identity</div>
+            <button class="dresser-btn gold">Issue Tag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 서랍 2 : 신분인증 + 결제 -->
+    <div class="dresser-drawer" id="drawerAuth">
+      <div class="dresser-handle">
+        <span class="handle-knob"></span>
+        <span class="dresser-drawer-label">II. Credentials</span>
+        <span class="handle-knob"></span>
+      </div>
+      <div class="dresser-content">
+        <div class="dresser-item">
+          <div class="passport-wrap">
+            <div class="passport-cover">
+              <div class="passport-emblem">⚜</div>
+              <div class="passport-text">PASSPORT</div>
+            </div>
+          </div>
+          <div class="dresser-item-info">
+            <div class="dresser-item-title">Identity Verification</div>
+            <div class="dresser-item-sub">Foreign nationals only</div>
+            <button class="dresser-btn">Verify Now</button>
+          </div>
+        </div>
+        <div class="dresser-divider"></div>
+        <div class="dresser-item">
+          <div class="wallet-wrap">
+            <div class="wallet-card">
+              <div class="card-chip"></div>
+              <div class="card-num">•••• •••• •••• ••••</div>
+            </div>
+          </div>
+          <div class="dresser-item-info">
+            <div class="dresser-item-title">Payment</div>
+            <div class="dresser-item-sub">International cards accepted</div>
+            <button class="dresser-btn">Add Card</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 서랍 3 : 퀘스트 기록 + 진행상황 -->
+    <div class="dresser-drawer" id="drawerQuests">
+      <div class="dresser-handle">
+        <span class="handle-knob"></span>
+        <span class="dresser-drawer-label">III. Missions</span>
+        <span class="handle-knob"></span>
+      </div>
+      <div class="dresser-content">
+        <div class="dresser-item">
+          <div class="scroll-wrap">
+            <div class="scroll-top-rod"></div>
+            <div class="scroll-body">
+              <div class="scroll-text">No active quests</div>
+            </div>
+            <div class="scroll-bottom-rod"></div>
+          </div>
+          <div class="dresser-item-info">
+            <div class="dresser-item-title">Quest Log</div>
+            <div class="dresser-item-sub">Your commission history</div>
+            <button class="dresser-btn">View All</button>
+          </div>
+        </div>
+        <div class="dresser-divider"></div>
+        <div class="dresser-item">
+          <div class="phone-wrap">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-status">— AWAITING —</div>
+                <div class="phone-msg">Your Recons are<br>on the move</div>
+              </div>
+            </div>
+          </div>
+          <div class="dresser-item-info">
+            <div class="dresser-item-title">Live Status</div>
+            <div class="dresser-item-sub">Real-time recon updates</div>
+            <button class="dresser-btn gold">Track Mission</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Drawer overlay -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
 
 <script>
 // ── Theme ──
@@ -661,100 +853,113 @@ const revealObserver = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ── Float Button — Tap to toggle drawer, Long press + drag to move ──
-const floatBtn = document.getElementById('floatBtn');
-const floatDrawer = document.getElementById('floatDrawer');
+// ── Ring Bar — 드래그로 상하 이동 ──
+const ringBar = document.getElementById('ringBar');
+const guildDrawer = document.getElementById('guildDrawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+const drawerClose = document.getElementById('drawerClose');
 
-let isDragging = false;
-let longPressTimer = null;
-let startY = 0;
-let btnTop = 0;
-let drawerOpen = false;
+let rbDragging = false;
+let rbLongPress = null;
+let rbStartY = 0;
+let rbBarTop = 0;
+let activeDrawer = null;
 
-function openDrawer() {
-  drawerOpen = true;
-  floatBtn.classList.add('open');
-  floatDrawer.classList.add('open');
-  // drawer 위치를 버튼에 맞춤
-  const rect = floatBtn.getBoundingClientRect();
-  floatDrawer.style.top = Math.max(20, rect.top - 40) + 'px';
+// 링바 초기 위치
+ringBar.style.top = '50%';
+ringBar.style.transform = 'translateY(-50%)';
+
+function openGuildDrawer(type) {
+  // 모든 서랍 숨기고 해당 서랍만 표시
+  document.querySelectorAll('.dresser-drawer').forEach(d => d.classList.remove('active'));
+  const target = {
+    profile: document.getElementById('drawerProfile'),
+    auth:    document.getElementById('drawerAuth'),
+    quests:  document.getElementById('drawerQuests'),
+  }[type];
+  if (target) target.classList.add('active');
+
+  activeDrawer = type;
+  guildDrawer.classList.add('open');
+  drawerOverlay.classList.add('open');
 }
 
-function closeDrawer() {
-  drawerOpen = false;
-  floatBtn.classList.remove('open');
-  floatDrawer.classList.remove('open');
+function closeGuildDrawer() {
+  activeDrawer = null;
+  guildDrawer.classList.remove('open');
+  drawerOverlay.classList.remove('open');
 }
 
-floatBtn.addEventListener('mousedown', e => {
-  startY = e.clientY;
-  const rect = floatBtn.getBoundingClientRect();
-  btnTop = rect.top;
+drawerClose.addEventListener('click', closeGuildDrawer);
+drawerOverlay.addEventListener('click', closeGuildDrawer);
 
-  longPressTimer = setTimeout(() => {
-    isDragging = true;
-    floatBtn.classList.add('dragging');
-    closeDrawer();
+// 고리 버튼 클릭
+document.querySelectorAll('.ring-item').forEach(item => {
+  item.addEventListener('click', e => {
+    if (rbDragging) return;
+    const type = item.dataset.drawer;
+    if (activeDrawer === type) {
+      closeGuildDrawer();
+    } else {
+      openGuildDrawer(type);
+    }
+  });
+});
+
+// 링바 드래그 (길게 누르면 이동)
+ringBar.addEventListener('mousedown', e => {
+  rbStartY = e.clientY;
+  const rect = ringBar.getBoundingClientRect();
+  rbBarTop = rect.top;
+
+  rbLongPress = setTimeout(() => {
+    rbDragging = true;
+    ringBar.style.transform = 'none';
+    ringBar.classList.add('dragging');
   }, 400);
 });
 
 document.addEventListener('mousemove', e => {
-  if (!isDragging) return;
-  const dy = e.clientY - startY;
-  const newTop = Math.max(20, Math.min(window.innerHeight - 80, btnTop + dy));
-  floatBtn.style.top = newTop + 'px';
-  floatBtn.style.transform = 'none';
+  if (!rbDragging) return;
+  const dy = e.clientY - rbStartY;
+  const newTop = Math.max(20, Math.min(window.innerHeight - ringBar.offsetHeight - 20, rbBarTop + dy));
+  ringBar.style.top = newTop + 'px';
 });
 
-document.addEventListener('mouseup', e => {
-  clearTimeout(longPressTimer);
-  if (isDragging) {
-    isDragging = false;
-    floatBtn.classList.remove('dragging');
-  } else {
-    if (drawerOpen) closeDrawer();
-    else openDrawer();
+document.addEventListener('mouseup', () => {
+  clearTimeout(rbLongPress);
+  if (rbDragging) {
+    rbDragging = false;
+    ringBar.classList.remove('dragging');
   }
 });
 
-// Touch support
-floatBtn.addEventListener('touchstart', e => {
-  const touch = e.touches[0];
-  startY = touch.clientY;
-  const rect = floatBtn.getBoundingClientRect();
-  btnTop = rect.top;
-
-  longPressTimer = setTimeout(() => {
-    isDragging = true;
-    floatBtn.classList.add('dragging');
-    closeDrawer();
+// 터치
+ringBar.addEventListener('touchstart', e => {
+  const t = e.touches[0];
+  rbStartY = t.clientY;
+  const rect = ringBar.getBoundingClientRect();
+  rbBarTop = rect.top;
+  rbLongPress = setTimeout(() => {
+    rbDragging = true;
+    ringBar.style.transform = 'none';
+    ringBar.classList.add('dragging');
   }, 400);
 }, { passive: true });
 
-floatBtn.addEventListener('touchmove', e => {
-  if (!isDragging) return;
-  const touch = e.touches[0];
-  const dy = touch.clientY - startY;
-  const newTop = Math.max(20, Math.min(window.innerHeight - 80, btnTop + dy));
-  floatBtn.style.top = newTop + 'px';
-  floatBtn.style.transform = 'none';
+ringBar.addEventListener('touchmove', e => {
+  if (!rbDragging) return;
+  const t = e.touches[0];
+  const dy = t.clientY - rbStartY;
+  const newTop = Math.max(20, Math.min(window.innerHeight - ringBar.offsetHeight - 20, rbBarTop + dy));
+  ringBar.style.top = newTop + 'px';
 }, { passive: true });
 
-floatBtn.addEventListener('touchend', () => {
-  clearTimeout(longPressTimer);
-  if (isDragging) {
-    isDragging = false;
-    floatBtn.classList.remove('dragging');
-  } else {
-    if (drawerOpen) closeDrawer();
-    else openDrawer();
-  }
-});
-
-// 드로어 외부 클릭 시 닫기
-document.addEventListener('click', e => {
-  if (drawerOpen && !floatBtn.contains(e.target) && !floatDrawer.contains(e.target)) {
-    closeDrawer();
+ringBar.addEventListener('touchend', () => {
+  clearTimeout(rbLongPress);
+  if (rbDragging) {
+    rbDragging = false;
+    ringBar.classList.remove('dragging');
   }
 });
 </script>
