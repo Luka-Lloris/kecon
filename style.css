@@ -282,6 +282,167 @@ body::before {
   background: var(--gold-dim);
 }
 
+/* ── Bronze Mirror Language Dial ── */
+.sidebar-lang {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  margin-top: 24px;
+}
+
+.lang-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.lang-dial-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  cursor: ns-resize;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.3) 18%,
+    black 38%,
+    black 62%,
+    rgba(0,0,0,0.3) 82%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.3) 18%,
+    black 38%,
+    black 62%,
+    rgba(0,0,0,0.3) 82%,
+    transparent 100%
+  );
+}
+
+.lang-dial-track {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.lang-coin {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -10px 0;
+  transition: transform 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
+  transform-origin: center center;
+}
+
+/* 코인 내부 원 — 청동거울 */
+.lang-coin-inner {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+    #6b5a2a 0%,
+    #3d3010 40%,
+    #1a1408 100%
+  );
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.15),
+    inset 0 -2px 6px rgba(0,0,0,0.6),
+    0 2px 8px rgba(0,0,0,0.5);
+  transition: box-shadow 0.45s ease;
+}
+
+[data-theme="light"] .lang-coin-inner {
+  background: radial-gradient(circle at 35% 35%,
+    #c9a84c 0%,
+    #8b6914 40%,
+    #5a4010 100%
+  );
+}
+
+/* 코인 텍스트 */
+.lang-coin-text {
+  position: relative;
+  z-index: 2;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.lang-coin-sub {
+  position: relative;
+  z-index: 2;
+  font-size: 8px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: 2px;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* SVG 링 — 전통 문양 띠 (나중에 실제 애셋으로 교체) */
+.lang-coin svg.coin-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 활성 코인 */
+.lang-coin.active .lang-coin-inner {
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.2),
+    inset 0 -2px 6px rgba(0,0,0,0.4),
+    0 0 16px rgba(201,168,76,0.4),
+    0 4px 12px rgba(0,0,0,0.6);
+}
+
+.lang-coin.active .lang-coin-text {
+  color: var(--gold-light);
+}
+
+/* Coming soon 코인 */
+.lang-coin.soon .lang-coin-text {
+  font-size: 9px;
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+}
+
+.lang-coin.soon .lang-coin-inner {
+  opacity: 0.4;
+}
+
+/* 스크롤 힌트 */
+.dial-hint {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+
 /* 테마 토글 */
 .theme-toggle {
   display: flex;

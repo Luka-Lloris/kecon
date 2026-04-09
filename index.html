@@ -39,11 +39,12 @@
 
     <div class="sidebar-lang">
       <div class="lang-label">Language</div>
-      <div class="lang-btns">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="ja">日</button>
-        <button class="lang-btn" data-lang="zh">中</button>
+      <div class="lang-dial-wrap" id="langDial">
+        <div class="lang-dial-track" id="langTrack">
+          <!-- JS로 코인 생성 -->
+        </div>
       </div>
+      <div class="dial-hint">SCROLL · SWIPE</div>
     </div>
 
     <div class="theme-toggle">
@@ -439,19 +440,185 @@ document.querySelectorAll('[data-theme-btn]').forEach(btn => {
   });
 });
 
-// ── Language ──
+// ── Bronze Mirror Language Dial ──
+const LANGUAGES = [
+  { code: 'en', label: 'EN',   name: 'English',    ready: true  },
+  { code: 'ja', label: '日',   name: 'Japanese',   ready: true  },
+  { code: 'zh', label: '中',   name: 'Chinese',    ready: true  },
+  { code: 'tw', label: 'TW',   name: '繁體',        ready: false },
+  { code: 'vi', label: 'VI',   name: 'Tiếng Việt', ready: false },
+  { code: 'id', label: 'ID',   name: 'Indonesia',  ready: false },
+  { code: 'ms', label: 'MS',   name: 'Melayu',     ready: false },
+  { code: 'th', label: 'ไทย',  name: 'Thai',       ready: false },
+  { code: 'es', label: 'ES',   name: 'Español',    ready: false },
+];
+
+const COIN_H = 70; // 코인 하나 유효 높이 (overlap 포함)
+const VISIBLE_CENTER = 100; // wrap 높이 200px 중앙
+
+let currentIdx = 0;
 let currentLang = 'en';
-function applyLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-    el.textContent = el.getAttribute('data-' + lang);
-  });
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.lang === lang);
+
+const track = document.getElementById('langTrack');
+const dialWrap = document.getElementById('langDial');
+
+// SVG 전통 문양 링 생성 (나중에 실제 애셋으로 교체)
+function makeCoinSVG() {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('viewBox', '0 0 90 90');
+  svg.classList.add('coin-ring');
+
+  // 외곽 링
+  const outerRing = document.createElementNS(ns, 'circle');
+  outerRing.setAttribute('cx', '45'); outerRing.setAttribute('cy', '45');
+  outerRing.setAttribute('r', '43');
+  outerRing.setAttribute('fill', 'none');
+  outerRing.setAttribute('stroke', 'url(#goldGrad)');
+  outerRing.setAttribute('stroke-width', '2');
+
+  // 안쪽 링
+  const innerRing = document.createElementNS(ns, 'circle');
+  innerRing.setAttribute('cx', '45'); innerRing.setAttribute('cy', '45');
+  innerRing.setAttribute('r', '36');
+  innerRing.setAttribute('fill', 'none');
+  innerRing.setAttribute('stroke', 'url(#goldGrad)');
+  innerRing.setAttribute('stroke-width', '1');
+  innerRing.setAttribute('stroke-dasharray', '3 4');
+
+  // 전통 문양 띠 — 삼각 반복 패턴 (placeholder)
+  const patternCount = 16;
+  for (let i = 0; i < patternCount; i++) {
+    const angle = (i / patternCount) * Math.PI * 2;
+    const r = 40;
+    const x = 45 + r * Math.cos(angle);
+    const y = 45 + r * Math.sin(angle);
+    const dot = document.createElementNS(ns, 'circle');
+    dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+    dot.setAttribute('r', '1.2');
+    dot.setAttribute('fill', 'url(#goldGrad)');
+    dot.setAttribute('opacity', '0.6');
+    svg.appendChild(dot);
+  }
+
+  // 그라디언트 정의
+  const defs = document.createElementNS(ns, 'defs');
+  const grad = document.createElementNS(ns, 'linearGradient');
+  grad.setAttribute('id', 'goldGrad');
+  grad.setAttribute('x1', '0%'); grad.setAttribute('y1', '0%');
+  grad.setAttribute('x2', '100%'); grad.setAttribute('y2', '100%');
+  const s1 = document.createElementNS(ns, 'stop');
+  s1.setAttribute('offset', '0%'); s1.setAttribute('stop-color', '#e8c96a');
+  const s2 = document.createElementNS(ns, 'stop');
+  s2.setAttribute('offset', '50%'); s2.setAttribute('stop-color', '#c9a84c');
+  const s3 = document.createElementNS(ns, 'stop');
+  s3.setAttribute('offset', '100%'); s3.setAttribute('stop-color', '#8b6914');
+  grad.appendChild(s1); grad.appendChild(s2); grad.appendChild(s3);
+  defs.appendChild(grad);
+  svg.appendChild(defs);
+  svg.appendChild(outerRing);
+  svg.appendChild(innerRing);
+  return svg;
+}
+
+// 코인 생성
+function buildCoins() {
+  track.innerHTML = '';
+  LANGUAGES.forEach((lang, i) => {
+    const coin = document.createElement('div');
+    coin.className = 'lang-coin' + (i === 0 ? ' active' : '') + (lang.ready ? '' : ' soon');
+    coin.dataset.idx = i;
+    coin.dataset.code = lang.code;
+
+    const inner = document.createElement('div');
+    inner.className = 'lang-coin-inner';
+
+    const textWrap = document.createElement('div');
+    textWrap.style.cssText = 'position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;';
+
+    const text = document.createElement('div');
+    text.className = 'lang-coin-text';
+    text.textContent = lang.ready ? lang.label : lang.label;
+
+    const sub = document.createElement('div');
+    sub.className = 'lang-coin-sub';
+    sub.textContent = lang.ready ? '' : 'soon';
+
+    textWrap.appendChild(text);
+    textWrap.appendChild(sub);
+    coin.appendChild(makeCoinSVG());
+    coin.appendChild(inner);
+    coin.appendChild(textWrap);
+    track.appendChild(coin);
   });
 }
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+
+// 트랙 위치 + 각 코인 원근 효과 업데이트
+function updateDial(idx, animate) {
+  const targetTop = VISIBLE_CENTER - idx * COIN_H - COIN_H / 2;
+  track.style.transition = animate ? 'top 0.45s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+  track.style.top = targetTop + 'px';
+
+  document.querySelectorAll('.lang-coin').forEach((coin, i) => {
+    const diff = i - idx;
+    const absDiff = Math.abs(diff);
+
+    // 대각선 원근감: 위아래로 갈수록 작아지고 기울어짐
+    const scale = Math.max(0.45, 1 - absDiff * 0.22);
+    const translateX = diff * 6; // 대각선 효과
+    const rotateX = diff * -18; // 원근 기울기
+    const opacity = Math.max(0.15, 1 - absDiff * 0.38);
+
+    coin.style.transform = `translateX(${translateX}px) scale(${scale}) perspective(400px) rotateX(${rotateX}deg)`;
+    coin.style.opacity = opacity;
+    coin.classList.toggle('active', i === idx);
+  });
+}
+
+function applyLang(code) {
+  currentLang = code;
+  document.querySelectorAll('[data-' + code + ']').forEach(el => {
+    el.textContent = el.getAttribute('data-' + code);
+  });
+}
+
+function goToIdx(idx) {
+  currentIdx = Math.max(0, Math.min(LANGUAGES.length - 1, idx));
+  updateDial(currentIdx, true);
+  const lang = LANGUAGES[currentIdx];
+  if (lang.ready) applyLang(lang.code);
+}
+
+buildCoins();
+updateDial(0, false);
+
+// 마우스 휠
+dialWrap.addEventListener('wheel', e => {
+  e.preventDefault();
+  e.stopPropagation();
+  if (e.deltaY > 0) goToIdx(currentIdx + 1);
+  else goToIdx(currentIdx - 1);
+}, { passive: false });
+
+// 터치 스와이프
+let touchStartY = 0;
+dialWrap.addEventListener('touchstart', e => {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+dialWrap.addEventListener('touchmove', e => {
+  e.preventDefault();
+  const dy = touchStartY - e.touches[0].clientY;
+  if (Math.abs(dy) > 30) {
+    goToIdx(currentIdx + (dy > 0 ? 1 : -1));
+    touchStartY = e.touches[0].clientY;
+  }
+}, { passive: false });
+
+// 코인 클릭
+track.addEventListener('click', e => {
+  const coin = e.target.closest('.lang-coin');
+  if (coin) goToIdx(parseInt(coin.dataset.idx));
 });
 
 // ── Mobile Sidebar ──
