@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KECON — Korea Recon Guild</title>
+  <meta name="description" content="We go first. You travel safe. Korea's premier travel reconnaissance guild for discerning foreign travelers." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+<!-- ── Mobile Menu Button ── -->
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+
+<!-- ── Sidebar Overlay (mobile) ── -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ── Layout ── -->
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+      <div class="logo-seal"></div>
+      <div class="logo-text">KECON</div>
+      <div class="logo-sub">Korea Recon Guild</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#hero"   data-glyph="⛩" data-en="Entrance"    data-ja="入口"     data-zh="入口"   class="active">Entrance</a>
+      <a href="#why"    data-glyph="🌿" data-en="The Realm"   data-ja="王国"     data-zh="王国"           >The Realm</a>
+      <a href="#quest"  data-glyph="📜" data-en="Quest Board" data-ja="依頼板"   data-zh="任务板"          >Quest Board</a>
+      <a href="#scout"  data-glyph="🗡" data-en="The Scouts"  data-ja="斥候隊"   data-zh="侦察队"          >The Scouts</a>
+      <a href="#legend" data-glyph="👑" data-en="Legend Quest" data-ja="伝説依頼" data-zh="传奇任务"        >Legend Quest</a>
+    </nav>
+
+    <div class="sidebar-lang">
+      <div class="lang-label">Language</div>
+      <div class="lang-btns">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ja">日</button>
+        <button class="lang-btn" data-lang="zh">中</button>
+      </div>
+    </div>
+
+    <div class="theme-toggle">
+      <button class="theme-btn active" data-theme-btn="dark"     title="Dark">🌙</button>
+      <button class="theme-btn"        data-theme-btn="light"    title="Light">☀</button>
+      <button class="theme-btn"        data-theme-btn="contrast" title="High Contrast">◑</button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <div class="hero-img"></div>
+      <div class="hero-bg"></div>
+
+      <div class="hero-content">
+        <div class="hero-eyebrow"
+             data-en="Korea Recon Guild"
+             data-ja="韓国レコン・ギルド"
+             data-zh="韩国侦察公会">
+          Korea Recon Guild
+        </div>
+
+        <h1 class="hero-title">
+          We go first.
+          <span data-en="You travel safe."
+                data-ja="あなたは安全に旅する。"
+                data-zh="您安全出行。">
+            You travel safe.
+          </span>
+        </h1>
+
+        <p class="hero-sub"
+           data-en="Before you step foot in Korea, our scouts walk the path. Every alley, every rooftop, every hidden menu — documented, verified, delivered."
+           data-ja="あなたが韓国に踏み込む前に、私たちの斥候が道を歩く。すべての路地、すべての屋上、すべての隠れたメニューを記録し、確認し、お届けします。"
+           data-zh="在您踏上韩国之前，我们的侦察兵先行探路。每一条小巷、每一个屋顶、每一份隐藏菜单——记录、核实、呈递。">
+          Before you step foot in Korea, our scouts walk the path.<br>
+          Every alley, every rooftop, every hidden menu —<br>
+          documented, verified, delivered.
+        </p>
+
+        <a href="#quest" class="hero-cta"
+           data-en="Post a Quest"
+           data-ja="依頼を出す"
+           data-zh="发布任务">
+          ⚔ &nbsp; Post a Quest
+        </a>
+      </div>
+
+      <div class="scroll-hint">
+        <span class="scroll-line"></span>
+        Scroll to explore
+      </div>
+    </section>
+
+    <!-- ── WHY KECON ── -->
+    <section id="why">
+      <div class="section-header reveal">
+        <div class="section-eyebrow"
+             data-en="The Realm"
+             data-ja="王国について"
+             data-zh="关于王国">
+          The Realm
+        </div>
+        <h2 class="section-title"
+            data-en="Korea, as you've never seen it."
+            data-ja="あなたがまだ見ぬ韓国。"
+            data-zh="您从未见过的韩国。">
+          Korea, as you've<br>never seen it.
+        </h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <span class="why-glyph">🌿</span>
+          <h3 data-en="70% Mountain" data-ja="70%が山岳" data-zh="70%山地">70% Mountain</h3>
+          <p data-en="Ancient forests, stone temples, mist-covered peaks. A land that has kept its secrets for centuries — and we know where they hide."
+             data-ja="古代の森、石の寺院、霧に覆われた峰々。何世紀もの間、秘密を守ってきた土地。私たちはその場所を知っている。"
+             data-zh="古老的森林、石头寺庙、云雾缭绕的山峰。这片土地守护着几个世纪的秘密——我们知道它们藏在哪里。">
+            Ancient forests, stone temples, mist-covered peaks. A land that has kept its secrets for centuries — and we know where they hide.
+          </p>
+        </div>
+
+        <div class="why-card reveal">
+          <span class="why-glyph">⚔</span>
+          <h3 data-en="2,000 Years of Culture" data-ja="2000年の文化" data-zh="2000年文化">2,000 Years of Culture</h3>
+          <p data-en="Royal courts, warrior traditions, shamanist rituals still practiced at dawn. No guidebook catches this. Our scouts do."
+             data-ja="王宮、武士の伝統、夜明けに今も行われるシャーマンの儀式。ガイドブックには載っていない。私たちの斥候が捉える。"
+             data-zh="王宫、武士传统、黎明时分依然举行的萨满仪式。没有任何导游书能捕捉到这些，但我们的侦察兵可以。">
+            Royal courts, warrior traditions, shamanist rituals still practiced at dawn. No guidebook catches this. Our scouts do.
+          </p>
+        </div>
+
+        <div class="why-card reveal">
+          <span class="why-glyph">🏯</span>
+          <h3 data-en="Old North, New South" data-ja="古い北、新しい南" data-zh="古老的北，崭新的南">Old North, New South</h3>
+          <p data-en="The peninsula holds two worlds. The south dances between neon and dynasty. We navigate it so you don't have to guess."
+             data-ja="半島には二つの世界がある。南はネオンと王朝の間を踊る。あなたが迷わないように、私たちが案内する。"
+             data-zh="半岛拥有两个世界。南方在霓虹与王朝之间起舞。我们为您导航，让您无需猜测。">
+            The peninsula holds two worlds. The south dances between neon and dynasty. We navigate it so you don't have to guess.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── QUEST BOARD ── -->
+    <section id="quest">
+      <div class="section-header reveal">
+        <div class="section-eyebrow"
+             data-en="Quest Board"
+             data-ja="依頼掲示板"
+             data-zh="任务公告板">
+          Quest Board
+        </div>
+        <h2 class="section-title"
+            data-en="Choose your mission."
+            data-ja="ミッションを選べ。"
+            data-zh="选择你的任务。">
+          Choose your mission.
+        </h2>
+      </div>
+
+      <div class="quest-board reveal">
+        <div class="board-inner">
+
+          <div class="board-header">
+            <div class="section-eyebrow" style="justify-content:center; margin-bottom:8px;"
+                 data-en="Active Commissions"
+                 data-ja="受付中の依頼"
+                 data-zh="受理中的委托">
+              Active Commissions
+            </div>
+            <h3 style="font-family:'Cinzel',serif; font-size:20px; color:var(--text-primary);"
+                data-en="All reports are custom-forged. No template. No recycled routes."
+                data-ja="すべてのリポートは特注品。テンプレートなし。使い回しのルートなし。"
+                data-zh="所有报告均为定制打造。无模板，无重复路线。">
+              All reports are custom-forged. No template. No recycled routes.
+            </h3>
+          </div>
+
+          <div class="quest-tiers">
+
+            <div class="quest-tier reveal">
+              <div class="tier-badge">📜</div>
+              <div class="tier-rank" data-en="Scout Tier I" data-ja="斥候階級 I" data-zh="侦察等级 I">Scout Tier I</div>
+              <div class="tier-name" data-en="Intelligence Report" data-ja="情報リポート" data-zh="情报报告">Intelligence Report</div>
+              <div class="tier-price">$1</div>
+              <div class="tier-desc"
+                   data-en="AI-assisted deep scan of Korean web sources. Comparative analysis. Verified intel on your target destination."
+                   data-ja="韓国のウェブを徹底スキャン。比較分析。目的地に関する検証済み情報。"
+                   data-zh="AI辅助深度扫描韩国网络资源。比较分析。关于目标目的地的经过核实的情报。">
+                AI-assisted deep scan of Korean web sources. Comparative analysis. Verified intel on your target destination.
+              </div>
+            </div>
+
+            <div class="quest-tier reveal">
+              <div class="tier-badge">🗡</div>
+              <div class="tier-rank" data-en="Scout Tier II" data-ja="斥候階級 II" data-zh="侦察等级 II">Scout Tier II</div>
+              <div class="tier-name" data-en="Basic Recon" data-ja="基本偵察" data-zh="基础侦察">Basic Recon</div>
+              <div class="tier-price">$20</div>
+              <div class="tier-desc"
+                   data-en="1–3 day boots-on-ground recon. Photos. Verified field report. Our scout physically walks your route."
+                   data-ja="1〜3日間の現地偵察。写真。検証済みフィールドリポート。斥候が実際にルートを歩く。"
+                   data-zh="1-3天实地侦察。照片。经过核实的现场报告。我们的侦察兵实际踏访您的路线。">
+                1–3 day boots-on-ground recon. Photos. Verified field report. Our scout physically walks your route.
+              </div>
+            </div>
+
+            <div class="quest-tier reveal">
+              <div class="tier-badge">🏹</div>
+              <div class="tier-rank" data-en="Scout Tier III" data-ja="斥候階級 III" data-zh="侦察等级 III">Scout Tier III</div>
+              <div class="tier-name" data-en="Standard Expedition" data-ja="標準遠征" data-zh="标准远征">Standard Expedition</div>
+              <div class="tier-price">$35</div>
+              <div class="tier-desc"
+                   data-en="4–7 day complex itinerary recon. Multi-venue, multi-district. Full expedition report with recommendations."
+                   data-ja="4〜7日間の複合日程偵察。複数スポット、複数地区。推薦事項付きの完全遠征リポート。"
+                   data-zh="4-7天复杂行程侦察。多场所、多地区。含建议的完整远征报告。">
+                4–7 day complex itinerary recon. Multi-venue, multi-district. Full expedition report with recommendations.
+              </div>
+            </div>
+
+            <div class="quest-tier reveal">
+              <div class="tier-badge">👑</div>
+              <div class="tier-rank" data-en="Scout Tier IV" data-ja="斥候階級 IV" data-zh="侦察等级 IV">Scout Tier IV</div>
+              <div class="tier-name" data-en="Premium Campaign" data-ja="プレミアム遠征" data-zh="高级远征">Premium Campaign</div>
+              <div class="tier-price">$60</div>
+              <div class="tier-desc"
+                   data-en="2 weeks+, multi-city, special requests. The full arsenal. Our finest scouts, your most ambitious journey."
+                   data-ja="2週間以上、複数都市、特別リクエスト。最高の陣容で。最上級の斥候が、あなたの最も野心的な旅を支える。"
+                   data-zh="2周以上，多城市，特殊要求。全力出击。我们最优秀的侦察兵，助您完成最雄心勃勃的旅程。">
+                2 weeks+, multi-city, special requests. The full arsenal. Our finest scouts, your most ambitious journey.
+              </div>
+            </div>
+
+            <div class="quest-tier special reveal">
+              <div class="tier-badge">🏛</div>
+              <div class="tier-rank" data-en="Guild Contract" data-ja="ギルド契約" data-zh="公会契约">Guild Contract</div>
+              <div class="tier-name" data-en="Corporate Expedition" data-ja="法人遠征" data-zh="企业远征">Corporate Expedition</div>
+              <div class="tier-price"
+                   data-en="Custom Quote"
+                   data-ja="別途見積"
+                   data-zh="单独报价">Custom Quote</div>
+              <div class="tier-desc"
+                   data-en="Corporate workcations, incentive tours, group expeditions. We handle the full advance recon so your team arrives ready."
+                   data-ja="企業ワーケーション、インセンティブツアー、グループ遠征。チームが準備万端で到着できるよう、完全な事前偵察を担当します。"
+                   data-zh="企业工作假期、激励旅游、团体远征。我们负责全面的预先侦察，让您的团队抵达时万事俱备。">
+                Corporate workcations, incentive tours, group expeditions. We handle the full advance recon so your team arrives ready.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THE SCOUTS ── -->
+    <section id="scout">
+      <div class="scout-grid">
+        <div>
+          <div class="section-header reveal">
+            <div class="section-eyebrow"
+                 data-en="The Scouts"
+                 data-ja="斥候隊について"
+                 data-zh="关于侦察队">
+              The Scouts
+            </div>
+            <h2 class="section-title"
+                data-en="Every scout is vetted. Every report is sealed."
+                data-ja="全斥候は審査済み。全リポートは封印済み。"
+                data-zh="每位侦察兵都经过审查。每份报告都已封存。">
+              Every scout is vetted.<br>Every report is sealed.
+            </h2>
+          </div>
+
+          <div class="scout-list">
+            <div class="scout-item reveal">
+              <span class="scout-icon">🔍</span>
+              <div>
+                <h4 data-en="Criminal Background Check" data-ja="犯罪歴調査" data-zh="犯罪背景调查">Criminal Background Check</h4>
+                <p data-en="Every scout passes a full criminal background verification before receiving their first commission."
+                   data-ja="全斥候は最初の依頼を受ける前に、完全な犯罪歴審査を通過する。"
+                   data-zh="每位侦察兵在接受第一个委托之前，都要通过完整的犯罪背景核查。">
+                  Every scout passes a full criminal background verification before receiving their first commission.
+                </p>
+              </div>
+            </div>
+
+            <div class="scout-item reveal">
+              <span class="scout-icon">🤝</span>
+              <div>
+                <h4 data-en="NDA Bound" data-ja="秘密保持契約締結" data-zh="受保密协议约束">NDA Bound</h4>
+                <p data-en="Your itinerary, identity, and movements are sealed under non-disclosure. Your privacy is sacred to us."
+                   data-ja="あなたの旅程、身元、動向は秘密保持契約のもとで封印される。あなたのプライバシーは神聖なものだ。"
+                   data-zh="您的行程、身份和行动受保密协议保护。您的隐私对我们而言至关重要。">
+                  Your itinerary, identity, and movements are sealed under non-disclosure. Your privacy is sacred to us.
+                </p>
+              </div>
+            </div>
+
+            <div class="scout-item reveal">
+              <span class="scout-icon">🏙</span>
+              <div>
+                <h4 data-en="Local Party System" data-ja="地域パーティーシステム" data-zh="本地队伍系统">Local Party System</h4>
+                <p data-en="Seoul, Busan, Jeju — regional scouts who actually live there. Assigned by district, matched by specialty."
+                   data-ja="ソウル、釜山、済州島—実際にそこに住む地域斥候。地区別に配属され、専門分野でマッチング。"
+                   data-zh="首尔、釜山、济州岛——真正生活在当地的区域侦察兵。按区域分配，按专长匹配。">
+                  Seoul, Busan, Jeju — regional scouts who actually live there. Assigned by district, matched by specialty.
+                </p>
+              </div>
+            </div>
+
+            <div class="scout-item reveal">
+              <span class="scout-icon">🛡</span>
+              <div>
+                <h4 data-en="Guild Channel Only" data-ja="ギルドチャンネルのみ" data-zh="仅限公会频道">Guild Channel Only</h4>
+                <p data-en="No direct contact between clients and scouts. All communication runs through the Guild. Your protection, guaranteed."
+                   data-ja="依頼者と斥候の直接連絡なし。全通信はギルドを経由する。あなたの安全を保証する。"
+                   data-zh="委托人与侦察兵之间无直接联系。所有通信均通过公会进行。您的保护，得到保障。">
+                  No direct contact between clients and scouts. All communication runs through the Guild. Your protection, guaranteed.
+                </p>
+              </div>
+            </div>
+
+            <div class="scout-item reveal">
+              <span class="scout-icon">⚖</span>
+              <div>
+                <h4 data-en="Female Client Priority" data-ja="女性依頼者優先" data-zh="女性委托人优先">Female Client Priority</h4>
+                <p data-en="Female clients may request female-only scout assignment. Safety is not optional."
+                   data-ja="女性依頼者は女性のみの斥候配置をリクエスト可能。安全はオプションではない。"
+                   data-zh="女性委托人可要求仅分配女性侦察兵。安全不是可选项。">
+                  Female clients may request female-only scout assignment. Safety is not optional.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scout-visual reveal">
+          <div class="scout-seal">
+            <div class="seal-inner">
+              <div class="seal-text">K</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LEGEND QUEST ── -->
+    <section id="legend">
+      <div class="legend-bg"></div>
+      <div class="legend-content">
+        <span class="legend-crown">👑</span>
+
+        <div class="section-eyebrow reveal"
+             data-en="Monthly Commission"
+             data-ja="月間依頼"
+             data-zh="月度委托">
+          Monthly Commission
+        </div>
+
+        <h2 class="section-title reveal"
+            data-en="The Legend Quest"
+            data-ja="伝説の依頼"
+            data-zh="传奇任务">
+          The Legend Quest
+        </h2>
+
+        <p class="legend-desc reveal"
+           data-en="Once a month, one traveler's story becomes a quest. Submit your dream Korea scenario. If chosen, the Guild funds your full recon — and our own Conductor joins the expedition."
+           data-ja="月に一度、一人の旅人の物語が依頼になる。あなたの夢の韓国シナリオを提出してください。選ばれれば、ギルドが完全な偵察費用を負担し、私たちのコンダクター自ら遠征に同行します。"
+           data-zh="每月一次，一位旅行者的故事成为一项任务。提交您梦想中的韩国旅行方案。如果入选，公会将资助您的全部侦察费用——我们的指挥官也将亲自参与这次远征。">
+          Once a month, one traveler's story becomes a quest.<br>
+          Submit your dream Korea scenario. If chosen,<br>
+          the Guild funds your full recon —<br>
+          and our own Conductor joins the expedition.
+        </p>
+
+        <a href="#" class="legend-cta reveal"
+           data-en="⚔  Submit Your Legend"
+           data-ja="⚔  伝説を申し込む"
+           data-zh="⚔  提交您的传奇">
+          ⚔ &nbsp; Submit Your Legend
+        </a>
+
+        <div class="divider" style="margin: 48px auto 0; width: 80px;"></div>
+
+        <p style="font-family:'IM Fell English',serif; font-style:italic; font-size:12px; color:var(--text-muted); margin-top:24px; letter-spacing:0.1em;" class="reveal">
+          * Winners are announced on the first day of each month. All submissions are kept confidential.
+        </p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ── RIGHT FLOATING BUTTON ── -->
+<button class="float-btn" id="floatBtn" aria-label="Guild Menu">
+  <span class="float-icon">⚔</span>
+</button>
+
+<!-- Floating Drawer -->
+<div class="float-drawer" id="floatDrawer">
+  <div class="drawer-section">
+    <div class="drawer-label" data-en="Navigate" data-ja="ナビゲート" data-zh="导航">Navigate</div>
+    <nav class="drawer-nav">
+      <a href="#hero"   data-en="Entrance"     data-ja="入口"     data-zh="入口">Entrance</a>
+      <a href="#why"    data-en="The Realm"    data-ja="王国"     data-zh="王国">The Realm</a>
+      <a href="#quest"  data-en="Quest Board"  data-ja="依頼板"   data-zh="任务板">Quest Board</a>
+      <a href="#scout"  data-en="The Scouts"   data-ja="斥候隊"   data-zh="侦察队">The Scouts</a>
+      <a href="#legend" data-en="Legend Quest" data-ja="伝説依頼" data-zh="传奇任务">Legend Quest</a>
+    </nav>
+  </div>
+  <a href="#" class="drawer-cta"
+     data-en="⚔  Post a Quest"
+     data-ja="⚔  依頼を出す"
+     data-zh="⚔  发布任务">
+    ⚔ &nbsp; Post a Quest
+  </a>
+</div>
+
+<script>
+// ── Theme ──
+const html = document.documentElement;
+document.querySelectorAll('[data-theme-btn]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const t = btn.dataset.themeBtn;
+    html.setAttribute('data-theme', t);
+    document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// ── Language ──
+let currentLang = 'en';
+function applyLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+}
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+// ── Mobile Sidebar ──
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const mobileBtn = document.getElementById('mobileMenuBtn');
+
+function toggleSidebar(open) {
+  sidebar.classList.toggle('open', open);
+  overlay.classList.toggle('open', open);
+}
+
+mobileBtn.addEventListener('click', () => toggleSidebar(true));
+overlay.addEventListener('click', () => toggleSidebar(false));
+
+// ── Active Nav on Scroll ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(s => observer.observe(s));
+
+// ── Scroll Reveal ──
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── Float Button — Tap to toggle drawer, Long press + drag to move ──
+const floatBtn = document.getElementById('floatBtn');
+const floatDrawer = document.getElementById('floatDrawer');
+
+let isDragging = false;
+let longPressTimer = null;
+let startY = 0;
+let btnTop = 0;
+let drawerOpen = false;
+
+function openDrawer() {
+  drawerOpen = true;
+  floatBtn.classList.add('open');
+  floatDrawer.classList.add('open');
+  // drawer 위치를 버튼에 맞춤
+  const rect = floatBtn.getBoundingClientRect();
+  floatDrawer.style.top = Math.max(20, rect.top - 40) + 'px';
+}
+
+function closeDrawer() {
+  drawerOpen = false;
+  floatBtn.classList.remove('open');
+  floatDrawer.classList.remove('open');
+}
+
+floatBtn.addEventListener('mousedown', e => {
+  startY = e.clientY;
+  const rect = floatBtn.getBoundingClientRect();
+  btnTop = rect.top;
+
+  longPressTimer = setTimeout(() => {
+    isDragging = true;
+    floatBtn.classList.add('dragging');
+    closeDrawer();
+  }, 400);
+});
+
+document.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const dy = e.clientY - startY;
+  const newTop = Math.max(20, Math.min(window.innerHeight - 80, btnTop + dy));
+  floatBtn.style.top = newTop + 'px';
+  floatBtn.style.transform = 'none';
+});
+
+document.addEventListener('mouseup', e => {
+  clearTimeout(longPressTimer);
+  if (isDragging) {
+    isDragging = false;
+    floatBtn.classList.remove('dragging');
+  } else {
+    if (drawerOpen) closeDrawer();
+    else openDrawer();
+  }
+});
+
+// Touch support
+floatBtn.addEventListener('touchstart', e => {
+  const touch = e.touches[0];
+  startY = touch.clientY;
+  const rect = floatBtn.getBoundingClientRect();
+  btnTop = rect.top;
+
+  longPressTimer = setTimeout(() => {
+    isDragging = true;
+    floatBtn.classList.add('dragging');
+    closeDrawer();
+  }, 400);
+}, { passive: true });
+
+floatBtn.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  const touch = e.touches[0];
+  const dy = touch.clientY - startY;
+  const newTop = Math.max(20, Math.min(window.innerHeight - 80, btnTop + dy));
+  floatBtn.style.top = newTop + 'px';
+  floatBtn.style.transform = 'none';
+}, { passive: true });
+
+floatBtn.addEventListener('touchend', () => {
+  clearTimeout(longPressTimer);
+  if (isDragging) {
+    isDragging = false;
+    floatBtn.classList.remove('dragging');
+  } else {
+    if (drawerOpen) closeDrawer();
+    else openDrawer();
+  }
+});
+
+// 드로어 외부 클릭 시 닫기
+document.addEventListener('click', e => {
+  if (drawerOpen && !floatBtn.contains(e.target) && !floatDrawer.contains(e.target)) {
+    closeDrawer();
+  }
+});
+</script>
+
+</body>
+</html>
